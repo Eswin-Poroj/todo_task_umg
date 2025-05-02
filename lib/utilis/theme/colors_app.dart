@@ -8,6 +8,7 @@ class ColorsApp {
   // Button
   static Color get buttonBackground => Color(0xFF0078D4);
   static Color get textButtonColor => Color(0xFF323130);
+  static Color get hoverButtonColor => Color(0xFF1E1E1E);
 
   // Text Color
   static Color get primaryTextColor => Color(0xFF000000);
@@ -22,4 +23,11 @@ class ColorsApp {
 
   // Check List
   static Color get colorBackgroundCheckList => Color(0xFF65558F);
+
+  // TextField
+  static Color get textFieldBackground => Color(0xFFF5F5F5);
+  static Color get textFieldBorder => Color(0xFFBDBDBD);
+  static Color get textFieldFocusedBorder => Color(0xFF0078D4);
+  static Color get textFieldTextColor => Color(0xFF212121);
+  static Color get textFieldHintColor => Color(0xFF9E9E9E);
 }
