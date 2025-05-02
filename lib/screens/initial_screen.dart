@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:go_router/go_router.dart';
 
 class InitialScreen extends StatefulWidget {
   const InitialScreen({super.key});
@@ -12,32 +12,40 @@ class _InitialScreenState extends State<InitialScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Expanded(
-        flex: 1,
-        child: Center(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                'Tareas Zen',
-                style: TextStyle(
-                  fontSize: 48,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'Roboto',
-                ),
-              ),
-              Image.asset('images/logo.png'),
-              Column(
-                children: [
-                  textScreen('Gestor de Tareas', 32.0),
-                  textScreen('&', 32.0),
-                  textScreen('Lista de Pendientes', 32.0),
-                ],
-              ),
-              ElevatedButton(onPressed: () {}, child: Text('Start Task')),
-            ],
-          ),
+      body: SizedBox(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          spacing: 5,
+          children: [
+            textScreen('Tareas Zen', 48),
+            Image.asset('images/logo.png', height: 200, width: 200),
+            Column(
+              children: [
+                textScreen('Gestor de Tareas', 32.0),
+                textScreen('&', 32.0),
+                textScreen('Lista de Pendientes', 32.0),
+              ],
+            ),
+            Text('¡Organiza tu día, conquista tus metas!'),
+            Text(
+              '-TareaZen',
+              style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+            ),
+            ElevatedButton.icon(
+              onPressed: () {
+                context.go('/login');
+              },
+              label: Text('INICIAR SESIÓN'),
+              icon: Icon(Icons.login),
+            ),
+            ElevatedButton.icon(
+              onPressed: () {},
+              label: Text('REGISTRARSE'),
+              icon: Icon(Icons.arrow_upward),
+            ),
+          ],
         ),
       ),
     );
@@ -54,11 +62,7 @@ class textScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       title,
-      style: TextStyle(
-        fontSize: sizeText,
-        fontFamily: GoogleFonts.roboto().fontFamily,
-        fontWeight: FontWeight.w900,
-      ),
+      style: TextStyle(fontSize: sizeText, fontWeight: FontWeight.w900),
     );
   }
 }

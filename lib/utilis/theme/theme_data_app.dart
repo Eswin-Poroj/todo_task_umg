@@ -32,6 +32,21 @@ class ThemeDataApp {
         hoverColor: ColorsApp.hoverButtonColor,
         textTheme: ButtonTextTheme.primary,
       ),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          iconAlignment: IconAlignment.start,
+          iconColor: ColorsApp.textButtonColor,
+          iconSize: 18.0,
+          padding: EdgeInsets.symmetric(vertical: 25, horizontal: 55),
+          backgroundColor: ColorsApp.buttonBackground,
+          foregroundColor: ColorsApp.textButtonColor,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10.0),
+            side: BorderSide(color: ColorsApp.textFieldBorder, width: 1.0),
+          ),
+          elevation: 10.0,
+        ),
+      ),
     );
   }
 }
