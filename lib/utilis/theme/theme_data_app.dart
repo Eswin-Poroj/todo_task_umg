@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_transitions/go_transitions.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:todo_task_umg/utilis/theme/colors_app.dart';
 
@@ -46,6 +47,13 @@ class ThemeDataApp {
           ),
           elevation: 10.0,
         ),
+      ),
+      pageTransitionsTheme: PageTransitionsTheme(
+        builders: {
+          TargetPlatform.android: GoTransitions.fadeUpwards,
+          TargetPlatform.iOS: FadeUpwardsPageTransitionsBuilder(),
+          TargetPlatform.fuchsia: FadeUpwardsPageTransitionsBuilder(),
+        },
       ),
     );
   }

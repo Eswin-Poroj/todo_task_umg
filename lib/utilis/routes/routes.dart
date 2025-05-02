@@ -1,23 +1,21 @@
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:go_transitions/go_transitions.dart';
 import 'package:todo_task_umg/screens/initial_screen.dart';
 import 'package:todo_task_umg/screens/login_screen.dart';
 
 final GoRouter router = GoRouter(
+  observers: [GoTransition.observer],
   routes: <RouteBase>[
     GoRoute(
       path: '/',
-      pageBuilder: (context, state) {
-        return MaterialPage(child: InitialScreen());
-      },
+      builder: (_, _) => const InitialScreen(),
       routes: <GoRoute>[
         GoRoute(
           path: '/login',
-          pageBuilder: (context, state) {
-            return MaterialPage(child: LoginScreen());
-          },
+          builder: (context, state) => const LoginScreen(),
+          pageBuilder: GoTransitions.fade.withFade.toBottom.call,
         ),
-      ]
+      ],
     ),
   ],
 );
