@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:todo_task_umg/utilis/theme/colors_app.dart';
 
 class ThemeDataApp {
   static ThemeData themeData() {
     return ThemeData(
-      appBarTheme: AppBarTheme(backgroundColor: ColorsApp.background),
+      appBarTheme: AppBarTheme(backgroundColor: ColorsApp.backgroundAppBar),
+      scaffoldBackgroundColor: ColorsApp.background,
+      textTheme: GoogleFonts.robotoTextTheme(),
       // Input decoration
       inputDecorationTheme: InputDecorationTheme(
         labelStyle: TextStyle(color: ColorsApp.textColorLabel),

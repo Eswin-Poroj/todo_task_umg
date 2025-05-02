@@ -4,6 +4,7 @@ class ColorsApp {
   // Background
   static Color get background => Color(0xFFF3F2F1);
   static Color get backgroundTextField => Color(0xFFFFFFFF);
+  static Color get backgroundAppBar => Color(0xFFFEF7FF);
 
   // Button
   static Color get buttonBackground => Color(0xFF0078D4);
