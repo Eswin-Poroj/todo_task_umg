@@ -2,9 +2,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:todo_task_umg/models/user.dart';
-
-// Url api the
-String url = 'http://localhost:3000/api';
+import 'package:todo_task_umg/services/api_config.dart';
 
 class ServicesUser extends ChangeNotifier {
   List<User> _users = [];
@@ -23,7 +21,7 @@ class ServicesUser extends ChangeNotifier {
     notifyListeners();
 
     try {
-      final response = await http.get(Uri.parse('$url/users'));
+      final response = await http.get(ApiConfig.usersEndpoint);
       if (response.statusCode == 200) {
         _users =
             (json.decode(response.body) as List)
@@ -51,8 +49,7 @@ class ServicesUser extends ChangeNotifier {
     notifyListeners();
 
     try {
-      final response = await http.post(
-        Uri.parse('$url/create_user'),
+      final response = await http.post(ApiConfig.createUserEndpoint,
         headers: {'Content-Type': 'application/json'},
         body: json.encode({'email': email, 'user': user, 'pass': pass}),
       );
