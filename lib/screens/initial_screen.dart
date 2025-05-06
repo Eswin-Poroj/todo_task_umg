@@ -41,7 +41,9 @@ class _InitialScreenState extends State<InitialScreen> {
               icon: Icon(Icons.login),
             ),
             ElevatedButton.icon(
-              onPressed: () {},
+              onPressed: () {
+                context.go('/registrer');
+              },
               label: Text('REGISTRARSE'),
               icon: Icon(Icons.arrow_upward),
             ),

@@ -49,11 +49,12 @@ class ServicesUser extends ChangeNotifier {
     notifyListeners();
 
     try {
-      final response = await http.post(ApiConfig.createUserEndpoint,
+      final response = await http.post(
+        ApiConfig.createUserEndpoint,
         headers: {'Content-Type': 'application/json'},
         body: json.encode({'email': email, 'user': user, 'pass': pass}),
       );
-      if (response.statusCode == 200) {
+      if (response.statusCode == 200 || response.statusCode == 201) {
         _error = 'User created successfully';
         _isLoading = false;
         notifyListeners();
@@ -61,11 +62,11 @@ class ServicesUser extends ChangeNotifier {
         _isLoading = false;
         _error = json.decode(response.body)['error'];
         notifyListeners();
-        throw Exception('Error creating user: ${response.statusCode}');
+        throw Exception('Error creating user: ${response.body}');
       }
     } catch (e) {
       _isLoading = false;
-      _error = 'Error creating user: ${e.toString()}';
+      _error = 'Fallo en ${e.toString()}';
       notifyListeners();
       throw Exception(_error);
     }
