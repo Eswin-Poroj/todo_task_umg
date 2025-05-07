@@ -48,14 +48,14 @@ class _LoginScreenState extends State<LoginScreen> {
         },
       );
 
-      while (userService.isLoading) {
-        await Future.delayed(const Duration(milliseconds: 100));
-      }
-
       await userService.loginUser(
         _emailController.text.trim(),
         _passwordController.text.trim(),
       );
+
+      while (userService.isLoading) {
+        await Future.delayed(const Duration(milliseconds: 100));
+      }
 
       if (mounted) {
         Navigator.of(context).pop();
