@@ -22,7 +22,7 @@ class ServicesUser extends ChangeNotifier {
 
     try {
       final response = await http.get(ApiConfig.usersEndpoint);
-      if (response.statusCode == 200) {
+      if (response.statusCode == 200 || response.statusCode == 201) {
         _users =
             (json.decode(response.body) as List)
                 .map((data) => User.fromJson(data))

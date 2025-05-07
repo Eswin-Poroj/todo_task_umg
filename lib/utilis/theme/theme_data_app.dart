@@ -29,7 +29,7 @@ class ThemeDataApp {
       //Button
       buttonTheme: ButtonThemeData(
         buttonColor: ColorsApp.buttonBackground,
-        padding: EdgeInsets.symmetric(vertical: 15, horizontal: 25),
+        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
         hoverColor: ColorsApp.hoverButtonColor,
         textTheme: ButtonTextTheme.primary,
       ),

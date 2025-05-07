@@ -91,7 +91,7 @@ class _RegistrerScreenState extends State<RegistrerScreen> {
       body: SafeArea(
         child: Container(
           height: MediaQuery.of(context).size.height,
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(24.0),
           child: Form(
             key: _keyForm,
             child: Column(
