@@ -48,7 +48,9 @@ class _LoginScreenState extends State<LoginScreen> {
         },
       );
 
-      await Future.delayed(const Duration(seconds: 2));
+      while (userService.isLoading) {
+        await Future.delayed(const Duration(milliseconds: 100));
+      }
 
       await userService.loginUser(
         _emailController.text.trim(),
