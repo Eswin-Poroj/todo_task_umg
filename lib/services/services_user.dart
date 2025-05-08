@@ -101,4 +101,9 @@ class ServicesUser extends ChangeNotifier {
       throw Exception(_error);
     }
   }
+
+  Future<void> logoutUser() async {
+    _currentUser = null;
+    notifyListeners();
+  }
 }
