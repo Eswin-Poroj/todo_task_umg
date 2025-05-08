@@ -19,13 +19,13 @@ class _InitialScreenState extends State<InitialScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           spacing: 5,
           children: [
-            textScreen('Tareas Zen', 48),
+            TextScreen('Tareas Zen', 48),
             Image.asset('images/logo.png', height: 200, width: 200),
             Column(
               children: [
-                textScreen('Gestor de Tareas', 32.0),
-                textScreen('&', 32.0),
-                textScreen('Lista de Pendientes', 32.0),
+                TextScreen('Gestor de Tareas', 32.0),
+                TextScreen('&', 32.0),
+                TextScreen('Lista de Pendientes', 32.0),
               ],
             ),
             Text('¡Organiza tu día, conquista tus metas!'),
@@ -54,11 +54,11 @@ class _InitialScreenState extends State<InitialScreen> {
   }
 }
 
-class textScreen extends StatelessWidget {
+class TextScreen extends StatelessWidget {
   final String title;
   final double sizeText;
 
-  const textScreen(this.title, this.sizeText, {super.key});
+  const TextScreen(this.title, this.sizeText, {super.key});
 
   @override
   Widget build(BuildContext context) {
