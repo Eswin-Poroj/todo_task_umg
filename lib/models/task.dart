@@ -1,19 +1,19 @@
 class Task {
-  int id;
+  int? id;
   int userId;
   String title;
   String details;
-  String dueDatetime;
+  String? dueDatetime;
   int isFavorite;
   String status;
   int priority;
 
   Task({
-    required this.id,
+    this.id,
     required this.userId,
     required this.title,
     required this.details,
-    required this.dueDatetime,
+    this.dueDatetime,
     required this.isFavorite,
     required this.status,
     required this.priority,
