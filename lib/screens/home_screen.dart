@@ -18,10 +18,11 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset('images/logo.png'),
+            Image.asset('images/logo.png', width: 40, height: 40),
             SizedBox(width: 8),
-            Text('TODO LIST'),
+            Text('TAREAS ZEN'),
           ],
         ),
         actions: [IconButton(icon: Icon(Icons.person), onPressed: () {})],
