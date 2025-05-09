@@ -22,10 +22,20 @@ class ServicesUser extends ChangeNotifier {
 
     try {
       final response = await http.get(ApiConfig.usersEndpoint);
+      print(response.statusCode);
       if (response.statusCode == 200 || response.statusCode == 201) {
+        final List<dynamic> userJson = json.decode(response.body);
+
         _users =
-            (json.decode(response.body) as List)
-                .map((data) => User.fromJson(data))
+            userJson
+                .map(
+                  (userData) => User(
+                    id: userData['id'],
+                    email: userData['email'],
+                    username: userData['username'],
+                    password: userData['password'],
+                  ),
+                )
                 .toList();
         _isLoading = false;
         notifyListeners();
@@ -79,13 +89,13 @@ class ServicesUser extends ChangeNotifier {
     try {
       await fetchDataUser();
       // verificamos si en la lista qué devuelve contiene esos dos parametros
-      final user = _users.firstWhere(
-        (user) => user.email == email && user.pass == pass,
-        orElse: () => User(email: '', pass: '', user: ''),
+      final userExist = _users.firstWhere(
+        (user) => user.email == email && user.password == pass,
+        orElse: () => User(id: 0, email: '', username: '', password: ''),
       );
 
-      if (user.email.isNotEmpty) {
-        _currentUser = user;
+      if (userExist.id != 0) {
+        _currentUser = userExist;
         _isLoading = false;
         notifyListeners();
       } else {

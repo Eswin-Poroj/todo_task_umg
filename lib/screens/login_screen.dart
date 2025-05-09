@@ -62,7 +62,7 @@ class _LoginScreenState extends State<LoginScreen> {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Inicio de sesión exitoso!')),
         );
-        Navigator.of(context).pushReplacementNamed('/home');
+        context.go('/login/home');
       }
     } catch (e) {
       if (mounted) {

@@ -6,7 +6,7 @@ Drawer drawerApp(BuildContext context) {
     child: ListView(
       padding: EdgeInsets.all(16.0),
       children: <Widget>[
-        const DrawerHeader(child: Text('TODO TASK')),
+        DrawerHeader(child: Text('TODO TASK')),
         ListTile(
           contentPadding: EdgeInsets.all(8.0),
           leading: const Icon(Icons.calendar_month),
