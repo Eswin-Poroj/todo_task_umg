@@ -13,7 +13,7 @@ class ServicesTask extends ChangeNotifier {
   String? get error => _error;
   bool get isLoading => _isLoading;
 
-  Future<void> getTaskByUser(String userID) async {
+  Future<void> getTaskByUser(int userID) async {
     _isLoading = true;
     try {
       final response = await http.get(

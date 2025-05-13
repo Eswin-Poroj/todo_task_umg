@@ -1,7 +1,7 @@
 class ApiConfig {
   ApiConfig({String? userId});
 
-  static Uri baseUrl = Uri.parse('http://localhost:3000/api');
+  static Uri baseUrl = Uri.parse('https://api-planner-1521.onrender.com/api');
 
   // endpoints for user
   static Uri usersEndpoint = Uri.parse('${baseUrl.toString()}/users');
@@ -11,6 +11,6 @@ class ApiConfig {
 
   // endpoints for task
   static Uri createTaskEndpoint = Uri.parse('${baseUrl.toString()}/createTask');
-  static Uri getTasksByUserEndpoint(String userId) =>
+  static Uri getTasksByUserEndpoint(int userId) =>
       Uri.parse('${baseUrl.toString()}/users/$userId/tasks');
 }
