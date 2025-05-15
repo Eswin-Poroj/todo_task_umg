@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_task_umg/screens/registrer_screen.dart';
+import 'package:todo_task_umg/services/services_task.dart';
 import 'package:todo_task_umg/services/services_user.dart';
 import 'package:todo_task_umg/utilis/routes/routes.dart';
 import 'package:todo_task_umg/utilis/theme/theme_data_app.dart';
@@ -11,6 +12,7 @@ void main() {
       providers: [
         ChangeNotifierProvider(create: (_) => ServicesUser()),
         ChangeNotifierProvider(create: (_) => PasswordVisibilityProvider()),
+        ChangeNotifierProvider(create: (_) => ServicesTask()),
       ],
       child: const MyApp(),
     ),
