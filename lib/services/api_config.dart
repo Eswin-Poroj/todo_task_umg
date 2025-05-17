@@ -13,4 +13,7 @@ class ApiConfig {
   static Uri createTaskEndpoint = Uri.parse('${baseUrl.toString()}/createTask');
   static Uri getTasksByUserEndpoint(int userId) =>
       Uri.parse('${baseUrl.toString()}/users/$userId/tasks');
+
+  static Uri updateTaskByIdEndpoint(int taskId) =>
+      Uri.parse('$baseUrl/updActivitie/$taskId');
 }

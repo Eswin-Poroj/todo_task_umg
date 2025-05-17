@@ -76,4 +76,8 @@ class ServicesTask extends ChangeNotifier {
       notifyListeners();
     }
   }
+
+  Future<void> updateTask(Task task) async {
+    
+  }
 }
