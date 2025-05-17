@@ -8,6 +8,7 @@ class ServicesTask extends ChangeNotifier {
   List<Task> tasks = [];
   bool _isLoading = false;
   String? _error;
+  String? _message;
 
   List<Task> get allTasks => tasks;
   String? get error => _error;
@@ -78,6 +79,38 @@ class ServicesTask extends ChangeNotifier {
   }
 
   Future<void> updateTask(Task task) async {
-    
+    _isLoading = true;
+    try {
+      final Task updateTask = Task(
+        userId: task.userId,
+        title: task.title,
+        details: task.details,
+        isFavorite: task.isFavorite,
+        status: task.status,
+        priority: task.priority,
+        id: task.id,
+        dueDatetime: task.dueDatetime,
+      );
+
+      final response = await http.put(
+        ApiConfig.updateTaskByIdEndpoint(task.id!),
+        headers: {'Content-Type': 'application/json'},
+        body: updateTask.toJson(),
+      );
+
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        _error = null;
+        _isLoading = false;
+        _message = response.body;
+        notifyListeners();
+      }
+    } catch (e) {
+      _error = e.toString();
+      _isLoading = false;
+      notifyListeners();
+    } finally {
+      _isLoading = false;
+      notifyListeners();
+    }
   }
 }
