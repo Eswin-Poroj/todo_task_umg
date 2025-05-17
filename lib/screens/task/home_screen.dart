@@ -24,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
       final taskService = Provider.of<ServicesTask>(context, listen: false);
 
       if (userService.currentUser != null) {
-        _tasksFuture = taskService.getTaskByUser(1);
+        _tasksFuture = taskService.getTaskByUser(userService.currentUser!.id);
       }
     });
   }
@@ -121,6 +121,16 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           ),
                         );
+                      } else if (taskList.isEmpty) {
+                        return Center(
+                          child: Text(
+                            'No hay tareas para ${user?.username}',
+                            style: const TextStyle(
+                              fontSize: 26,
+                              color: Colors.grey,
+                            ),
+                          ),
+                        );
                       }
 
                       return Column(
@@ -145,14 +155,20 @@ class _HomeScreenState extends State<HomeScreen> {
                                         width: 24,
                                         height: 24,
                                         decoration: BoxDecoration(
-                                          color: const Color(0xFF5D4A9C),
+                                          color:
+                                              task.isFavorite != 0
+                                                  ? Color(0xFF5D4A9C)
+                                                  : Colors.transparent,
                                           borderRadius: BorderRadius.circular(
                                             4,
                                           ),
                                         ),
-                                        child: const Icon(
-                                          Icons.check,
-                                          color: Colors.white,
+                                        child: Icon(
+                                          Icons.star_border,
+                                          color:
+                                              task.isFavorite != 0
+                                                  ? Color(0xFF5D4A9C)
+                                                  : Colors.grey,
                                           size: 18,
                                         ),
                                       ),
