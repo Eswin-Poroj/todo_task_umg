@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:todo_task_umg/screens/registrer_screen.dart';
+import 'package:todo_task_umg/screens/users/registrer_screen.dart';
 import 'package:todo_task_umg/services/services_task.dart';
 import 'package:todo_task_umg/services/services_user.dart';
 import 'package:todo_task_umg/utilis/routes/routes.dart';

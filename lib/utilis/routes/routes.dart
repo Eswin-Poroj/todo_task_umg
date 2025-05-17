@@ -1,9 +1,9 @@
 import 'package:go_router/go_router.dart';
 import 'package:go_transitions/go_transitions.dart';
-import 'package:todo_task_umg/screens/home_screen.dart';
+import 'package:todo_task_umg/screens/task/home_screen.dart';
 import 'package:todo_task_umg/screens/initial_screen.dart';
-import 'package:todo_task_umg/screens/login_screen.dart';
-import 'package:todo_task_umg/screens/registrer_screen.dart';
+import 'package:todo_task_umg/screens/users/login_screen.dart';
+import 'package:todo_task_umg/screens/users/registrer_screen.dart';
 
 final GoRouter router = GoRouter(
   observers: [GoTransition.observer],
