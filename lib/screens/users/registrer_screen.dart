@@ -67,7 +67,7 @@ class _RegistrerScreenState extends State<RegistrerScreen> {
           SnackBar(content: Text('Usuario registrado con éxito.')),
         );
 
-        context.go('/');
+        context.goNamed('login');
       }
     } catch (e) {
       print('Error: $e');
@@ -135,7 +135,7 @@ class _RegistrerScreenState extends State<RegistrerScreen> {
                     Text('¿Ya tienes una cuenta?'),
                     TextButton(
                       onPressed: () {
-                        context.go('/login');
+                        context.goNamed('login');
                       },
                       child: const Text('Iniciar Sesión'),
                     ),

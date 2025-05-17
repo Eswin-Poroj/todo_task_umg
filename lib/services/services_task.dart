@@ -13,6 +13,7 @@ class ServicesTask extends ChangeNotifier {
   List<Task> get allTasks => tasks;
   String? get error => _error;
   bool get isLoading => _isLoading;
+  String? get message => _message;
 
   Future<void> getTaskByUser(int userID) async {
     _isLoading = true;
@@ -42,6 +43,8 @@ class ServicesTask extends ChangeNotifier {
 
   Future<void> createTask(Task task) async {
     _isLoading = true;
+    notifyListeners();
+
     try {
       final Task newTask = Task(
         userId: task.userId,
@@ -58,20 +61,37 @@ class ServicesTask extends ChangeNotifier {
         headers: {'Content-Type': 'application/json'},
         body: newTask.toJson(),
       );
+
+      print("API Response: ${response.body}");
+      print("Status Code: ${response.statusCode}");
+
       if (response.statusCode == 200 || response.statusCode == 201) {
-        tasks.add(newTask);
+        final responseData = json.decode(response.body);
+        // Añadir la tarea creada (con id) a la lista local
+        if (responseData['id'] != null) {
+          final createdTask = Task(
+            id: responseData['id'],
+            userId: task.userId,
+            title: task.title,
+            details: task.details,
+            dueDatetime: task.dueDatetime,
+            isFavorite: task.isFavorite,
+            status: task.status,
+            priority: task.priority,
+          );
+          tasks.add(createdTask);
+        } else {
+          _error = 'Error al crear la tarea: ID no recibido';
+        }
         _error = null;
-        _isLoading = false;
-        notifyListeners();
+        _message = "Tarea creada correctamente";
       } else {
-        _error = 'Failed to create task';
-        _isLoading = false;
-        notifyListeners();
+        _error = 'Error al crear la tarea: ${response.reasonPhrase}';
+        _message = response.body.toString();
       }
     } catch (e) {
-      _error = e.toString();
-      _isLoading = false;
-      notifyListeners();
+      _error = 'Error de excepción: ${e.toString()}';
+      _message = null;
     } finally {
       _isLoading = false;
       notifyListeners();

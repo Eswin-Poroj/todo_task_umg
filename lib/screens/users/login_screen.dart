@@ -62,7 +62,7 @@ class _LoginScreenState extends State<LoginScreen> {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Inicio de sesión exitoso!')),
         );
-        context.go('/login/home');
+        context.goNamed('home');
       }
     } catch (e) {
       if (mounted) {
@@ -148,7 +148,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     Text('¿No tienes una cuenta?'),
                     TextButton(
                       onPressed: () {
-                        context.go('/registrer');
+                        context.goNamed('register');
                       },
                       child: Text('Registrate'),
                     ),

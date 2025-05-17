@@ -35,14 +35,14 @@ class _InitialScreenState extends State<InitialScreen> {
             ),
             ElevatedButton.icon(
               onPressed: () {
-                context.go('/login');
+                context.goNamed('login');
               },
               label: Text('INICIAR SESIÓN'),
               icon: Icon(Icons.login),
             ),
             ElevatedButton.icon(
               onPressed: () {
-                context.go('/registrer');
+                context.goNamed('register');
               },
               label: Text('REGISTRARSE'),
               icon: Icon(Icons.arrow_upward),
